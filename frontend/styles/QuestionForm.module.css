@@ -1,0 +1,74 @@
+/* QuestionForm.module.css */
+.container {
+  margin-top: 20px;
+}
+
+.container h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Style for form fields if needed */
+.formField {
+  margin-bottom: 20px;
+}
+
+/* Style for input fields */
+.inputField {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Style for text area */
+.textareaField {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Style for file input */
+.fileInput {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Style for options container */
+.optionsContainer {
+  margin-top: 10px;
+}
+
+/* Style for individual option items */
+.optionItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.optionItem input {
+  margin-right: 10px;
+}
+
+.optionItem button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.optionItem button:hover {
+  background-color: #c82333;
+}

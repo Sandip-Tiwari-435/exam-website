@@ -1,0 +1,45 @@
+/* styles/QuestionCard.module.css */
+.card {
+  max-width: 300px; /* Set a maximum width for the card */
+  width: 100%; /* Allow cards to take up full width if there's not enough space */
+  margin-bottom: 20px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+}
+.content {
+  padding: 20px;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.question {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.options {
+  list-style-type: none;
+  padding: 0;
+}
+
+.options li {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+/* Horizontal scrolling for question list */
+.questionList {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap; /* Allow items to wrap to the next row */
+  justify-content: flex-start; /* Start from the left */
+  overflow-x: auto;
+  padding: 10px;
+  gap: 20px; /* Add gap between cards */
+}

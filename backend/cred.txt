@@ -1,0 +1,4 @@
+mongoose.connect('mongodb+srv://sandipt335@E5TRur0kVOl9djyM@cluster0.9h9mkzl.mongodb.net/questions.teacher-site?retryWrites=true&w=majority', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});

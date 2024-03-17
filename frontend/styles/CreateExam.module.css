@@ -1,0 +1,59 @@
+/* CreateExam.module.css */
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+.categorySelection {
+  margin-top: 20px;
+}
+
+.categorySelection h2 {
+  margin-bottom: 10px;
+}
+
+.categorySelection button {
+  margin-right: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.categorySelection button:hover {
+  background-color: #0056b3;
+}
+
+.questionForm {
+  margin-top: 20px;
+}
+
+.questionForm h2 {
+  margin-bottom: 10px;
+}
+
+/* Style for form fields if needed */
+.formField {
+  margin-bottom: 20px;
+}
+
+/* Style for submit button */
+.submitButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+  background-color: #218838;
+}

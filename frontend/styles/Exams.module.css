@@ -9,6 +9,21 @@
   color: #333;
 }
 
+.examGo{
+  cursor: pointer;
+  color:#0056b3;
+}
+.examDelete{
+  cursor: pointer;
+  color:#0056b3;
+}
+.examIndi{
+  display: flex; 
+  width: 100%;
+  justify-content: space-between;
+}
+
+
 .button {
   padding: 10px 20px;
   font-size: 16px;

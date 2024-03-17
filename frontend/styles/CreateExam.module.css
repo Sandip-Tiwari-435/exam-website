@@ -12,6 +12,37 @@
   margin-bottom: 10px;
 }
 
+.examHeading{
+  font-size: xx-large;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: blueviolet;
+}
+
+.questionType {
+  width: 50%;
+  text-align: left;
+  font-size: large;
+    background-color: #214e7b;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+.questionType img{
+  display: block;
+  max-width: 100%; /* Make sure the image doesn't exceed the container's width */
+  height: auto;
+}
+
+
+.questionType input[type="text"]{
+  width: 100%;
+  margin-top: 5px;
+  font-size: larger;
+}
+
+
 .categorySelection button {
   margin-right: 10px;
   padding: 10px 20px;

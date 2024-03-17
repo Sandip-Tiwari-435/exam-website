@@ -4,6 +4,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 const examSchema = require('./Exam')
+const studentSchema = require('./Student')
 const questionSchema = require('./Question')
 const bodyParser = require('body-parser');
 app.use(bodyParser.json({ limit: '10mb' }))
@@ -66,6 +67,43 @@ app.get("/api/exams/:id", async (req, res) => {
   try {
     const exam = await examSchema.findById(req.params.id).populate("questions");
     res.json(exam);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+app.get("/api/exams", async (req, res) => {
+  try {
+    const exam = await examSchema.find();
+    console.log(exam);
+    res.json(exam);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+app.delete("/api/exams/delete/:id", async (req, res) => {
+  try {
+    console.log(req.params.id);
+    const ObjectId = require('mongodb').ObjectId;
+    const resi=examSchema.deleteOne({ "_id": new ObjectId(req.params.id) });
+    console.log((await resi).acknowledged);
+    
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
+app.post("/api/student/submit", async (req, res) => {
+  try {
+
+    
+    console.log(req.body)
+    const studentData = await studentSchema.create(req.body);
+    console.log(studentData);
+    res.status(201).json(studentData);
+    
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Server error" });

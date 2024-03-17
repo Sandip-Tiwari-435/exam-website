@@ -6,6 +6,7 @@ export default function QuestionForm({ category, onAddQuestion }) {
   const [question, setQuestion] = useState("");
   const [options, setOptions] = useState(["", "", "", ""]);
   const [image, setImage] = useState(null);
+            
 
   // Function to handle changes in the question input field
   const handleQuestionChange = (e) => {
@@ -18,11 +19,32 @@ export default function QuestionForm({ category, onAddQuestion }) {
     newOptions[index] = value;
     setOptions(newOptions);
   };
+  const fileToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  };
 
   // Function to handle image upload
-  const handleImageUpload = (e) => {
+  const handleImageUpload = async (e) => {
     const file = e.target.files[0];
-    setImage(file);
+    const base64Promise1 = await fileToBase64(file);
+    console.log(base64Promise1)
+    // if (file) {
+    //   const reader = new FileReader();
+      
+    //   reader.onloadend = () => {
+    //     const longStr=reader.result;
+    //     var bindata = new Buffer(string.split(",")[1],"base64");
+    //     setImage(reader.result);
+    //   };
+      
+    //   reader.readAsDataURL(file);
+    // }
+    setImage(base64Promise1);
   };
 
   // Function to handle adding the question to the current list
@@ -34,6 +56,7 @@ export default function QuestionForm({ category, onAddQuestion }) {
       options: category === "trueFalse" ? null : options, // Set options to null for true/false questions
       image: category === "imageIdentification" ? image : null, // Set image to null for non-image identification questions
     };
+    console.log(newQuestion.image);
     // Pass the new question to the parent component
     onAddQuestion(newQuestion);
     // Reset form fields

@@ -5,6 +5,8 @@ const mongoose = require("mongoose");
 const app = express();
 const examSchema = require('./Exam')
 const questionSchema = require('./Question')
+const bodyParser = require('body-parser');
+app.use(bodyParser.json({ limit: '10mb' }))
 
 app.use(express.json()); // Connect to MongoDB
 app.use(express.urlencoded());
@@ -62,7 +64,7 @@ app.post("/api/exams", async (req, res) => {
 // API endpoint to retrieve exam data
 app.get("/api/exams/:id", async (req, res) => {
   try {
-    const exam = await Exam.findById(req.params.id).populate("questions");
+    const exam = await examSchema.findById(req.params.id).populate("questions");
     res.json(exam);
   } catch (error) {
     console.error(error);

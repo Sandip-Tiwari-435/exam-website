@@ -8,7 +8,7 @@ export default function QuestionCard({ question }) {
       <div className={styles.content}>
         {question.category === "imageIdentification" && (
           <img
-            src={URL.createObjectURL(question.image)}
+            src={question.image}
             alt="Question"
             className={styles.image}
           />

@@ -9,7 +9,9 @@ import QuestionForm from "../../components/QuestionForm"; // Import the Question
 import QuestionCard from "../../components/QuestionCard";
 
 export default function CreateExam() {
-  const router = useRouter();
+  const router = useRouter();  
+  const { param1 } = router.query;
+
   const [category, setCategory] = useState("");
   const [questions, setQuestions] = useState([]);
 
@@ -27,17 +29,18 @@ export default function CreateExam() {
     try {
       console.log(JSON.stringify({ questions }));
       const response = await axios.post("http://localhost:3001/api/exams", {
-        title: "exam",
+        title: param1,
         questions: questions,
       },{headers:{"Content-Type" : "application/json"}});
       console.log(response.data); // Log response from the server
+      router.push(`/exams/form/${response.data._id}`);
     } catch (error) {
       console.error(error);
     }
   };
   return (
     <div className={styles.container}>
-      <h1>Create New Exam</h1>
+      <h1>{param1}</h1>
       <div className={styles.categorySelection}>
         <h2>Choose Question Category:</h2>
         {/* Add onClick handlers for category selection */}

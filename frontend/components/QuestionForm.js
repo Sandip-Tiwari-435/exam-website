@@ -43,62 +43,70 @@ export default function QuestionForm({ category, onAddQuestion }) {
   };
 
   return (
-    <div className={styles.container}>
-      <h2>
-        Add{" "}
-        {category === "mcq"
-          ? "Multiple Choice"
-          : category === "trueFalse"
-          ? "True or False"
-          : "Image Identification"}{" "}
-        Question:
-      </h2>
-      {/* Input field for the question */}
-      <div className={styles.formField}>
-        <label htmlFor="question">Question:</label>
-        <input
-          type="text"
-          id="question"
-          value={question}
-          onChange={handleQuestionChange}
-          placeholder="Enter your question"
-        />
-      </div>
-      {/* Render options for multiple choice questions */}
-      {category === "mcq" && (
-        <div className={styles.multipleChoiceOptions}>
-          {[0, 1, 2, 3].map((index) => (
-            <div className={styles.formField} key={index}>
-              <label htmlFor={`option${index + 1}`}>{`Option ${
-                index + 1
-              }:`}</label>
-              <input
-                type="text"
-                id={`option${index + 1}`}
-                value={options[index]}
-                onChange={(e) => handleOptionChange(index, e.target.value)}
-                placeholder={`Enter option ${index + 1}`}
-              />
-            </div>
-          ))}
-        </div>
-      )}
-      {/* Render file input for image identification questions */}
-      {category === "imageIdentification" && (
+    <>
+      <div className={styles.container}>
+        <h2>
+          Add{" "}
+          {category === "mcq"
+            ? "Multiple Choice"
+            : category === "trueFalse"
+            ? "True or False"
+            : "Image Identification"}{" "}
+          Question:
+        </h2>
+        {/* Input field for the question */}
         <div className={styles.formField}>
-          <label htmlFor="image">Upload Image:</label>
+          <label htmlFor="question">Question:</label>
           <input
-            type="file"
-            id="image"
-            accept="image/*"
-            onChange={handleImageUpload}
+            type="text"
+            id="question"
+            value={question}
+            onChange={handleQuestionChange}
+            placeholder="Enter your question"
           />
         </div>
-      )}
-      {/* Add question button */}
-      <button onClick={handleAddQuestion} className={styles.addButton}>
-        Add Question
-      </button>
-    </div>
+        {/* Render options for multiple choice questions */}
+        {category === "mcq" && (
+          <div className={styles.multipleChoiceOptions}>
+            {[0, 1, 2, 3].map((index) => (
+              <div
+                className={styles.formField}
+                key={index}
+              >
+                <label htmlFor={`option${index + 1}`}>{`Option ${
+                  index + 1
+                }:`}</label>
+                <input
+                  type="text"
+                  id={`option${index + 1}`}
+                  value={options[index]}
+                  onChange={(e) => handleOptionChange(index, e.target.value)}
+                  placeholder={`Enter option ${index + 1}`}
+                />
+              </div>
+            ))}
+          </div>
+        )}
+        {/* Render file input for image identification questions */}
+        {category === "imageIdentification" && (
+          <div className={styles.formField}>
+            <label htmlFor="image">Upload Image:</label>
+            <input
+              type="file"
+              id="image"
+              accept="image/*"
+              onChange={handleImageUpload}
+            />
+          </div>
+        )}
+        {/* Add question button */}
+        <button
+          onClick={handleAddQuestion}
+          className={styles.addButton}
+        >
+          Add Question
+        </button>
+      </div>
+    </>
   );
 }

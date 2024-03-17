@@ -169,6 +169,9 @@
   display: flex;
   padding: 50px;
 }
+.pageLayout {
+  min-height: 100vh;
+}
 
 .button {
   padding: 10px 20px;

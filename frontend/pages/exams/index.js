@@ -45,7 +45,7 @@ export default function Exams() {
   };
   return (
     <div className={styles.container}>
-      <h1>Your Exams</h1>
+      <h1>Your Exams</h1><span onClick={()=>router.push("/exams/admin")} className={styles.reports}>Check reports</span>
       <button onClick={handleCreateExam} className={styles.button}>Create New Exam</button>
       {/* List existing exams here */}
       {examId.map((exam,i)=>{

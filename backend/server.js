@@ -49,6 +49,56 @@ db.once("open", () => {
 // const Question = mongoose.model("Question", questionSchema);
 
 // API endpoint to store exam data
+
+const getReports = async (filters) => {
+  // Constructing the base query
+  let query = {};
+
+  // Add filters if they are not empty
+  if (filters.eName) {
+    query.eName = filters.eName;
+  }
+  if (filters.roll) {
+    query.roll = filters.roll;
+  }
+  if (filters.created_at) {
+    // Assuming created_at is a Date object
+    const startOfDay = new Date(filters.created_at);
+    startOfDay.setHours(0, 0, 0, 0);
+
+    const endOfDay = new Date(filters.created_at);
+    endOfDay.setHours(23, 59, 59, 999);
+
+    query.createdAt = {
+      $gte: startOfDay,
+      $lte: endOfDay
+    };
+  }
+
+  // Fetch reports based on the constructed query
+  try {
+    console.log(req.body);
+  
+    const ok = await examSchema.aggregate([
+        {
+          $lookup: {
+            from: "students",
+            localField: "title",
+            foreignField: "eName",
+            as: "result"
+          }
+        },
+    ]).find(query).exec();
+
+    return ok;
+    
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+
 app.post("/api/exams", async (req, res) => {
   try {
     // Create exam
@@ -88,7 +138,7 @@ app.delete("/api/exams/delete/:id", async (req, res) => {
     const ObjectId = require('mongodb').ObjectId;
     const resi=examSchema.deleteOne({ "_id": new ObjectId(req.params.id) });
     console.log((await resi).acknowledged);
-    
+    res.json("Deleted");
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Server error" });
@@ -108,6 +158,19 @@ app.post("/api/student/submit", async (req, res) => {
     console.error(error);
     res.status(500).json({ error: "Server error" });
   }
+});
+
+app.post("/api/report", async (req, res) => {
+
+  getReports(req.body)
+  .then(reports => {
+    console.log("Reports:", reports);
+  })
+  .catch(error => {
+    res.status(500).json({ error: "Server error" });
+    console.error("Error:", error);
+  });
+  
 });
 
 // Start server

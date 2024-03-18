@@ -48,7 +48,7 @@ export default function FormExam() {
       const response = await axios.post("http://localhost:3001/api/student/submit", 
       data,
       {headers:{"Content-Type" : "application/json"}});
-
+      router.push("/exams/submitSuccess");
 
     } catch (error) {
       console.error(error);

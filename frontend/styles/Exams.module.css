@@ -19,10 +19,27 @@
 }
 .examIndi{
   display: flex; 
-  width: 100%;
+  width: 50%;
+  margin:auto;
+  padding:10px;
+  border-bottom: #007bff;
   justify-content: space-between;
 }
+.examIndi:hover{
+  background-color: #0d1823;
+  transition: background-color 0.3s ease;
+}
 
+.reports{
+  right:10px;
+  cursor:pointer;
+  margin: auto;
+}
+.reports:hover{
+  background-color: #162d45;
+  margin-right:10px;
+  transition: background-color 0.3s ease;
+}
 
 .button {
   padding: 10px 20px;
